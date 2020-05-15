@@ -31,7 +31,7 @@ class ChinajwPipeline(object):
     def process_item(self, item, spider):
         line = [item['publishtime'], item['fromwhere'], item['title'], item['content'], item['author'], item['url']]
         self.ws.append(line)
-        self.wb.save(r"C:\Users\asus\Desktop\pydata\中国军网.xlsx")
+        self.wb.save(r"中国军网.xlsx")
         return item
 
 

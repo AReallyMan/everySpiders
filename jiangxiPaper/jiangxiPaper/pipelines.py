@@ -22,16 +22,16 @@ from spider_util.duplicate import Duplicate  # 临时环境
 from spider_util.settings import *  # 公共配置
 
 
-class JusticePipeline(object):
+class JiangxipaperPipeline(object):
     def __init__(self):
         self.wb = Workbook()
         self.ws = self.wb.active
-        self.ws.append(['时间', '来源', '标题', '内容', '作者', '链接', '编辑'])
+        self.ws.append(['时间', '来源', '标题', '内容',  '链接', ])
 
     def process_item(self, item, spider):
-        line = [item['publishtime'], item['fromwhere'], item['title'], item['content'], item['editor'], item['url'], item['author']]
+        line = [item['publishtime'], item['fromwhere'], item['title'], item['content'],  item['url']]
         self.ws.append(line)
-        self.wb.save(r"正义网.xlsx")
+        self.wb.save("江西日报.xlsx")
         return item
 
 
@@ -93,4 +93,5 @@ class RedisPipeline(object):
         print('爬虫关闭')
         r = redis.Redis(host=REDIS_HOST, port=str(REDIS_PORT), db=0)
         r.delete(spider.name)
+
 

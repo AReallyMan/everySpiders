@@ -32,7 +32,7 @@ class ShowchinaPipeline(object):
         line = [item['publishtime'], item['fromwhere'], item['title'], item['content'],
                 item['url']]
         self.ws.append(line)
-        self.wb.save(r"C:\Users\asus\Desktop\pydata\看中国.xlsx")
+        self.wb.save(r"看中国.xlsx")
         return item
 
 

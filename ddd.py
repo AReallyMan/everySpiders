@@ -7,6 +7,9 @@ from email.mime.multipart import MIMEMultipart
 import datetime
 import time
 from datetime import date, timedelta
-x = "来源：深圳特区报    2020年05月13日"
-c = re.findall(".*    ", x)[0]
-print(c)
+
+print(datetime.date.today())
+if str(datetime.date.today())+" 00:00:00" < "2020-05-15 16:06:22" < str(datetime.date.today())+" 23:59:59":
+    print("ooooo")
+else:
+    print("0000000000")
