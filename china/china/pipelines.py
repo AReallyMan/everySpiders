@@ -15,8 +15,7 @@ import os
 import sys
 
 path = [
-    "/usr/local/workspace-gerapy/gerapy/projects",
-    "C:/Users/asus/Desktop/spiders"
+  "/usr/local/workspace-gerapy/gerapy/projects", "C:/Users/asus/Desktop/spiders", "/app/spiders"
 ]
 [sys.path.append(p)for p in path if os.path.isdir(p)]
 from spider_util.duplicate import Duplicate  # 临时环境

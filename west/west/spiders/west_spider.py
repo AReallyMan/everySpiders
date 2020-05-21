@@ -47,7 +47,10 @@ class WestSpiderSpider(CrawlSpider):
                 else:
                     item['publishtime'] = ""
                 fromwhere = response.xpath("//div[@class='layout-left']/p/text()").extract_first()
-                fromwhere = re.findall("来源.*", fromwhere)
+                if fromwhere:
+                    fromwhere = re.findall("来源.*", fromwhere)
+                else:
+                    fromwhere = ''
                 if fromwhere:
                     item['fromwhere'] = fromwhere[0]
                 else:
