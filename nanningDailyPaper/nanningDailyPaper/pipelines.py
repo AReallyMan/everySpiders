@@ -20,23 +20,23 @@ path = [
 from spider_util.duplicate import Duplicate  # 临时环境
 from spider_util.settings import *  # 公共配置
 
-
-class XizangPipeline(object):
+class NanningdailypaperPipeline(object):
     def __init__(self):
         self.wb = Workbook()
         self.ws = self.wb.active
-        self.ws.append(["时间", "来源", "标题", "内容", "作者", "链接"])
+        self.ws.append(['时间', '来源', '标题', '内容', '链接'])
 
     def process_item(self, item, spider):
-        line = [item['publishtime'], item['fromwhere'], item['title'], item['content'], item['author'], item['url']]
+        line = [item['publishtime'], item['fromwhere'], item['title'], item['content'], item['url']]
         self.ws.append(line)
-        self.wb.save(r"中国西藏网.xlsx")
+        self.wb.save("南宁日报.xlsx")
         return item
 
 
 class KafkaPipeline(object):
     def open_spider(self, spider):
-        self.producer = KafkaProducer(bootstrap_servers=['sentiment01:9092', 'sentiment03:9092'], value_serializer=lambda m: json.dumps(m).encode('ascii'))
+        self.producer = KafkaProducer(bootstrap_servers=['sentiment01:9092', 'sentiment03:9092'],
+                                      value_serializer=lambda m: json.dumps(m).encode('ascii'))
 
     def process_item(self, item, spider):
         item['index'] = ELASTICSEARCH_INDEX
@@ -91,5 +91,4 @@ class RedisPipeline(object):
         print('爬虫关闭')
         r = redis.Redis(host=REDIS_HOST, port=str(REDIS_PORT), db=0)
         r.delete(spider.name)
-
 

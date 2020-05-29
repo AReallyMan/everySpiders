@@ -30,7 +30,7 @@ class ChinazxcmPipeline(object):
     def process_item(self, item, spider):
         line = [item['publishtime'], item['title'], item['content'], item['editor'], item['fromwhere'], item['url']]
         self.ws.append(line)
-        self.wb.save(r"C:\Users\asus\Desktop\pydata\中国政协传媒网.xlsx")
+        self.wb.save(r"中国政协传媒网.xlsx")
         return item
 
 class KafkaPipeline(object):
